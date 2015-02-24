@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{32437033-5f04-4d95-9c71-f7005c27fd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Comms">
+      <UniqueIdentifier>{d18b379c-6d79-4243-a209-910e659419d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageProcessing">
+      <UniqueIdentifier>{1406a373-76a5-4040-a967-71da2d3b7db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ManagedComms">
+      <UniqueIdentifier>{51b33190-ad2a-46a9-8fd9-ef82a46b3c5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Processor">
+      <UniqueIdentifier>{67e45c4d-31b7-4bf2-8d25-853913dbe183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party Libraries">
+      <UniqueIdentifier>{1c0d6f3b-03ac-42e3-86bb-5dc0f562007e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party Libraries\Rapid XML">
+      <UniqueIdentifier>{61d92a81-3166-4a39-a2cb-fc7f7af64f64}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AutoCutter2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AutoCutterException.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\ConfigurationManager.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\GenericBase.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Logger.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Comms\Packet.cpp">
+      <Filter>Comms</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageProcessing\OpenCVImage.cpp">
+      <Filter>ImageProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageProcessing\OpenCVImageProcessing.cpp">
+      <Filter>ImageProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedComms\CommsController.cpp">
+      <Filter>ManagedComms</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedComms\CommsLinkBase.cpp">
+      <Filter>ManagedComms</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedComms\SerialCommsLink.cpp">
+      <Filter>ManagedComms</Filter>
+    </ClCompile>
+    <ClCompile Include="FormHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Form1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AutoCutterException.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CommonHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\ConfigurationManager.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\GenericBase.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Logger.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Comms\Packet.h">
+      <Filter>Comms</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\IImageContainer.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\IImageInterface.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\OpenCVImage.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\OpenCVImageProcessing.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedComms\CommsController.h">
+      <Filter>ManagedComms</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedComms\CommsLinkBase.h">
+      <Filter>ManagedComms</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedComms\GenericWrapper.h">
+      <Filter>ManagedComms</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedComms\ICommsListener.h">
+      <Filter>ManagedComms</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedComms\SerialCommsLink.h">
+      <Filter>ManagedComms</Filter>
+    </ClInclude>
+    <ClInclude Include="Processor\CustomPoint3d.h">
+      <Filter>Processor</Filter>
+    </ClInclude>
+    <ClInclude Include="Processor\RectangleContainer.h">
+      <Filter>Processor</Filter>
+    </ClInclude>
+    <ClInclude Include="Processor\ScaleCalculator.h">
+      <Filter>Processor</Filter>
+    </ClInclude>
+    <ClInclude Include="ThIrd Party Libraries\rapidxml-1.13\rapidxml.hpp">
+      <Filter>Third Party Libraries\Rapid XML</Filter>
+    </ClInclude>
+    <ClInclude Include="ThIrd Party Libraries\rapidxml-1.13\rapidxml_iterators.hpp">
+      <Filter>Third Party Libraries\Rapid XML</Filter>
+    </ClInclude>
+    <ClInclude Include="ThIrd Party Libraries\rapidxml-1.13\rapidxml_print.hpp">
+      <Filter>Third Party Libraries\Rapid XML</Filter>
+    </ClInclude>
+    <ClInclude Include="ThIrd Party Libraries\rapidxml-1.13\rapidxml_utils.hpp">
+      <Filter>Third Party Libraries\Rapid XML</Filter>
+    </ClInclude>
+    <ClInclude Include="FormHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

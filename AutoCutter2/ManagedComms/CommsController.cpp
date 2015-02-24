@@ -126,15 +126,15 @@ void CommsController::SendPacket(Packet& pPacket)
 
 	_ackReceived = false;
 	_commsLink->SendData(pPacket);
-	_packetAckTimer.Start();
+	//_packetAckTimer.Start();
 
-	//hold until ack received or timeout
-	while(!_ackReceived)
-	{
-	}
+	////hold until ack received or timeout
+	//while(!_ackReceived)
+	//{
+	//}
 
-	_ackReceived = false;
-	_packetAckTimer.Stop();
+	//_ackReceived = false;
+	//_packetAckTimer.Stop();
 	
 	_log->Log(std::string("CommsController::SendPacket - Finish"));
 }
@@ -145,9 +145,9 @@ void CommsController::SendAllPackets()
 
 	_log->Log(std::string("Sending packets"));
 
-	for(int i = 0; i < _packetsToSend.Count; i++)
+	for each(GenericWrapper<Packet> ^ wrap in _packetsToSend)
 	{
-
+		SendPacket(*(wrap->GetInternal()));
 	}
 
 	_log->Log(std::string("CommsController::SendAllPackets - End"));

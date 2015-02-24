@@ -204,7 +204,7 @@ namespace AutoCutterApp {
 			// serialPortsList
 			// 
 			this->serialPortsList->FormattingEnabled = true;
-			this->serialPortsList->Items->AddRange(gcnew cli::array< System::Object^  >(1) {L"COM4"});
+			this->serialPortsList->Items->AddRange(System::IO::Ports::SerialPort::GetPortNames());
 			this->serialPortsList->Location = System::Drawing::Point(814, 3);
 			this->serialPortsList->Name = L"serialPortsList";
 			this->serialPortsList->Size = System::Drawing::Size(121, 24);

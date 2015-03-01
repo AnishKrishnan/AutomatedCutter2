@@ -136,6 +136,7 @@ bool Packet::TryParseDataToPacket(vector<char>& pData)
 	if(_totalDataBytes <= 0)
 	{
 		_log->Log(std::string("Number of data bytes is less than or equal to 0"));
+		return false;
 	}
 	iterator++;
 	numberOfBytesProcessed++;

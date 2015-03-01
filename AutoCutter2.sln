@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoCutter2", "AutoCutter2\AutoCutter2.vcxproj", "{DB0AB749-3FC6-4242-A63E-D1F87382F6CC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoCutterArduino", "AutoCutterArduino\AutoCutterArduino.vcxproj", "{D2916CF3-7451-4065-9EC1-BE904BE2EA8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{DB0AB749-3FC6-4242-A63E-D1F87382F6CC}.Debug|Win32.Build.0 = Debug|x64
 		{DB0AB749-3FC6-4242-A63E-D1F87382F6CC}.Release|Win32.ActiveCfg = Release|Win32
 		{DB0AB749-3FC6-4242-A63E-D1F87382F6CC}.Release|Win32.Build.0 = Release|Win32
+		{D2916CF3-7451-4065-9EC1-BE904BE2EA8A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D2916CF3-7451-4065-9EC1-BE904BE2EA8A}.Debug|Win32.Build.0 = Debug|Win32
+		{D2916CF3-7451-4065-9EC1-BE904BE2EA8A}.Release|Win32.ActiveCfg = Release|Win32
+		{D2916CF3-7451-4065-9EC1-BE904BE2EA8A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

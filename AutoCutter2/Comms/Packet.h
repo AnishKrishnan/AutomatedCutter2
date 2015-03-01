@@ -42,11 +42,11 @@ public:
 private:
 
 
-	int _totalNumberOfBytes;
+	char _totalNumberOfBytes;
 
 	PacketType _packetType;
 
-	int _totalDataBytes;
+	char _totalDataBytes;
 
 	vector<char> _data, _fullPacketData;
 };

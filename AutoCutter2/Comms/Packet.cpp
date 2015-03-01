@@ -59,29 +59,16 @@ char* Packet::ConstructPacket()
 	_fullPacketData.insert(_fullPacketData.end(), PACKET_END_STREAM, PACKET_END_STREAM + PACKET_END_STREAM_LENGTH);
 
 	_log->Log(std::string("Adding packet data size"));
-	char dataSize[sizeof(int)];
-	CommonHelper::ConvertValueToCharArray<int>(_totalDataBytes, dataSize, _log);
-	if(dataSize == NULL)
-	{
-		throw AutoCutterException(std::string("Could not retrieve data size"));
-	}
-
-	_fullPacketData.insert(_fullPacketData.begin(), dataSize, dataSize + sizeof(dataSize) / sizeof(char));
+	_fullPacketData.insert(_fullPacketData.begin(), _totalDataBytes);
 
 	_log->Log(std::string("Adding packet type"));
 	char packetTypeByte = (char)_packetType;
 	_fullPacketData.insert(_fullPacketData.begin(), packetTypeByte);
 
 	_log->Log(std::string("Adding total packet size"));
-	_totalNumberOfBytes = _fullPacketData.size();
+	_totalNumberOfBytes = (char)_fullPacketData.size();
 
-	char packetSize[sizeof(int)];
-	CommonHelper::ConvertValueToCharArray<int>(_totalNumberOfBytes, packetSize, _log);
-	if(packetSize == NULL)
-	{
-		throw AutoCutterException("Could not retrieve total packet size");
-	}
-	_fullPacketData.insert(_fullPacketData.begin(), packetSize, packetSize + sizeof(packetSize) / sizeof(char));
+	_fullPacketData.insert(_fullPacketData.begin(), _totalNumberOfBytes);
 
 	_log->Log(std::string("Adding start byte"));
 	_fullPacketData.insert(_fullPacketData.begin(), PACKET_START_BYTE);
@@ -126,13 +113,13 @@ bool Packet::TryParseDataToPacket(vector<char>& pData)
 	}
 	iterator++;
 	_log->Log(std::string("Parsing number of bytes in packet"));
-	_totalNumberOfBytes = CommonHelper::ConvertCharArrayToValue<int>(&(*iterator), _log);
+	_totalNumberOfBytes = *iterator;
 	if(_totalNumberOfBytes <= 0)
 	{
 		_log->Log(std::string("Number of bytes is less than or equal to 0"));
 		return false;
 	}
-	iterator += sizeof(int);
+	iterator++;
 
 	_log->Log(std::string("Parsing packet type"));
 	_packetType = static_cast<PacketType>(*iterator);
@@ -145,18 +132,18 @@ bool Packet::TryParseDataToPacket(vector<char>& pData)
 	numberOfBytesProcessed++;
 
 	_log->Log(std::string("Parsing number of data bytes"));
-	_totalDataBytes = CommonHelper::ConvertCharArrayToValue<int>(&(*iterator), _log);
+	_totalDataBytes = *iterator;
 	if(_totalDataBytes <= 0)
 	{
 		_log->Log(std::string("Number of data bytes is less than or equal to 0"));
 	}
-	iterator += sizeof(int);
-	numberOfBytesProcessed += sizeof(int);
+	iterator++;
+	numberOfBytesProcessed++;
 	
 	_log->Log(std::string("Parsing data"));
-	_data.insert(_data.begin(), iterator, pData.end());
+	_data.insert(_data.begin(), iterator, pData.end() - PACKET_END_STREAM_LENGTH + 1);
 	numberOfDataBytes = _data.size();
-	numberOfBytesProcessed += _data.size();
+	numberOfBytesProcessed += _data.size() + PACKET_END_STREAM_LENGTH; 
 
 	_log->Log(std::string("Validating checksums"));
 	if(numberOfDataBytes != _totalDataBytes || numberOfBytesProcessed != _totalNumberOfBytes)

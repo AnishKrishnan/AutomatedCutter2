@@ -3,7 +3,7 @@
 
 Packet::Packet(void)
 {
-	ClearData(_data, PACKET_MAX_DATA_LENGTH);
+	CommonHelper::ClearArray<char>(_data, PACKET_MAX_DATA_LENGTH);
 	_totalNumberOfBytes = 0;
 	_totalDataBytes = 0;
 	_packetType = PACKETTYPE_INVALID;
@@ -155,14 +155,4 @@ bool Packet::TryParseDataToPacket(char * pData, char pLength)
 
 }
 
-void Packet::ClearData(char * pData, char pLength)
-{
-	if(pData != NULL)
-	{
-		for(char i = 0; i < pLength; i++)
-		{
-			pData[i] = 0;
-		}
-	}
-}
 #pragma endregion

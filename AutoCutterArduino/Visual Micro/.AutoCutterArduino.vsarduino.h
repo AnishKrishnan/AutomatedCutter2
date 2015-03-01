@@ -60,6 +60,15 @@ extern "C" void __cxa_pure_virtual() {;}
 #define portInputRegister(P)
 #define portModeRegister(P)
 #include <AutoCutterArduino.ino>
+#include <CommonHelper.h>
+#include <CommsController.cpp>
+#include <CommsController.h>
+#include <CommsLinkBase.cpp>
+#include <CommsLinkBase.h>
+#include <ICommsListener.h>
 #include <Packet.cpp>
 #include <Packet.h>
+#include <Queue.h>
+#include <SerialComms.cpp>
+#include <SerialComms.h>
 #endif

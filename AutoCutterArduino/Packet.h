@@ -1,4 +1,5 @@
 #pragma once
+#include "CommonHelper.h"
 
 typedef enum 
 {
@@ -42,9 +43,6 @@ public:
 
 
 private:
-
-	void ClearData(char * pData, char pLength);
-
 
 	char _totalNumberOfBytes;
 

@@ -68,7 +68,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <ICommsListener.h>
 #include <Packet.cpp>
 #include <Packet.h>
-#include <Queue.h>
 #include <QueueList.h>
 #include <SerialComms.cpp>
 #include <SerialComms.h>

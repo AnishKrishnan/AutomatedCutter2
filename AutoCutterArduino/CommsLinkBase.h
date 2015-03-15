@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Packet.h"
-#include "Queue.h"
+#include "QueueList.h"
 
 #include "ICommsListener.h"
 
@@ -26,7 +26,7 @@ protected:
 
 private:
 
-	Queue<ICommsListener*> _receivedDataListeners;
+	QueueList<ICommsListener*> _receivedDataListeners;
 
 };
 

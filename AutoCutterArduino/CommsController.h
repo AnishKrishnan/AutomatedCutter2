@@ -4,6 +4,7 @@
 #include "SerialComms.h"
 #include "ICommsListener.h"
 #include "CommsLinkBase.h"
+#include "QueueList.h" 
 
 #define COMMS_MAX_RECEIVED_PACKETS 255
 class CommsController : ICommsListener
@@ -19,7 +20,7 @@ private:
 	void SendResponse(PacketType pPacketType);
 	SerialComms _serialPort;
 
-	Queue<Packet> _receivedPackets;
-	Queue<Packet> _outputPackets;
+	QueueList<Packet> _receivedPackets;
+	QueueList<Packet> _outputPackets;
 };
 

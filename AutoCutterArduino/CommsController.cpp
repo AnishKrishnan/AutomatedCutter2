@@ -1,17 +1,14 @@
 #include "CommsController.h"
 #include "Arduino.h"
 
-CommsController::CommsController(HardwareSerial& pSerial) : _serialPort(pSerial), _receivedPackets(COMMS_MAX_RECEIVED_PACKETS), _outputPackets(COMMS_MAX_RECEIVED_PACKETS)
+CommsController::CommsController(HardwareSerial& pSerial) : _serialPort(pSerial)
 {
 }
 
 void CommsController::RecievedDataCallback(Packet& pPacket)
 {		
-	if(!_receivedPackets.IsFull())
-	{
-		//_receivedPackets.Push(pPacket);
-		SendResponse(PACKETTYPE_ACK);
-	}
+	_receivedPackets.push(pPacket);
+	SendResponse(PACKETTYPE_ACK);
 }
 
 void CommsController::RecievedByte(unsigned char pByte)
@@ -24,24 +21,19 @@ void CommsController::SendResponse(PacketType pPacketType)
 {
 	if(IS_VALID_PACKET_TYPE(pPacketType))
 	{
-		/*
 		Packet* p = new Packet();
 		p->SetPacketType(pPacketType);
-		_outputPackets.Push(*p);
-		*/
-		Packet p;
-		p.SetPacketType(pPacketType);
-		_serialPort.SendData(p);
+		_outputPackets.push(*p);	
 	}
 }
 
 void CommsController::ProcessOutbox()
 {
 	
-	for(unsigned char i = 0; i < _outputPackets.Size(); i++)
+	for(unsigned char i = 0; i < _outputPackets.count(); i++)
 	{
 		digitalWrite(13, HIGH);
-		Packet packetToSend = _outputPackets.Pop();
+		Packet packetToSend = _outputPackets.pop();
 		_serialPort.SendData(packetToSend);
 	}
 }

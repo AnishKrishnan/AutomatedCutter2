@@ -167,6 +167,7 @@
     <ClCompile Include="Comms\Packet.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ExecutionProgress.cpp" />
     <ClCompile Include="FormHelper.cpp" />
     <ClCompile Include="ImageProcessing\OpenCVImage.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -197,6 +198,9 @@
     <ClInclude Include="Common\GenericBase.h" />
     <ClInclude Include="Common\Logger.h" />
     <ClInclude Include="Comms\Packet.h" />
+    <ClInclude Include="ExecutionProgress.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -227,6 +231,9 @@
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ExecutionProgress.resx">
+      <DependentUpon>ExecutionProgress.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resX">
       <DependentUpon>Form1.h</DependentUpon>
       <SubType>Designer</SubType>

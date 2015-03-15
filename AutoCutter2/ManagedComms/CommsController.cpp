@@ -17,7 +17,7 @@ CommsController::CommsController()
 		throw AutoCutterException("CommsController::ctor - pConfigManager is null");
 	}
 
-	_packetsToSend.Clear();
+	_packetsToSend = gcnew System::Collections::Generic::List<GenericWrapper<Packet> ^>();
 
 	_packetAckTimer.Elapsed += gcnew System::Timers::ElapsedEventHandler(CommsController::PacketAckTimerElapsed);
 	_packetAckTimer.Interval = atof(_configManager->getValue("PacketAckTimeout").c_str());
@@ -61,7 +61,7 @@ void CommsController::AddCoordinate(CustomPoint3d<float>& pStartPoint, CustomPoi
 
 	_log->Log(std::string("Adding packet to list"));
 	GenericWrapper<Packet> ^ packetWrapper = gcnew GenericWrapper<Packet>(packetToAdd);
-	_packetsToSend.Add(packetWrapper);
+	_packetsToSend->Add(packetWrapper);
 
 	_log->Log(std::string("CommsController::AddCoordinate - Finish"));
 }
@@ -139,20 +139,10 @@ void CommsController::SendPacket(Packet& pPacket)
 	_log->Log(std::string("CommsController::SendPacket - Finish"));
 }
 
-void CommsController::SendAllPackets()
+System::Collections::Generic::List<GenericWrapper<Packet> ^>^ CommsController::GetPackets()
 {
-	_log->Log(std::string("CommsController::SendAllPackets - Start"));
-
-	_log->Log(std::string("Sending packets"));
-
-	for each(GenericWrapper<Packet> ^ wrap in _packetsToSend)
-	{
-		SendPacket(*(wrap->GetInternal()));
-	}
-
-	_log->Log(std::string("CommsController::SendAllPackets - End"));
+	return _packetsToSend;
 }
-
 void CommsController::PacketAckTimerElapsed(System::Object^ pSource, System::Timers::ElapsedEventArgs^ pEArgs)
 {
 	throw AutoCutterException("Did not receive packet in the appropriate amount of time");

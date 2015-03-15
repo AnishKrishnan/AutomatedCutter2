@@ -26,7 +26,7 @@ public:
 
 	void SendPacket(Packet& pPacket);
 
-	void SendAllPackets();
+	System::Collections::Generic::List<GenericWrapper<Packet> ^>^ GetPackets();
 
 #pragma endregion
 
@@ -44,7 +44,7 @@ private:
 	CommsLinkBase^ _commsLink;
 	Logger* _log;
 	ConfigurationManager* _configManager;
-	System::Collections::Generic::List<GenericWrapper<Packet> ^> _packetsToSend;
+	System::Collections::Generic::List<GenericWrapper<Packet> ^>^ _packetsToSend;
 	System::Timers::Timer _packetAckTimer;
 	bool _ackReceived;
 

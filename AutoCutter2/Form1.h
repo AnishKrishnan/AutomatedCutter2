@@ -5,6 +5,7 @@
 #include "OpenCVImageProcessing.h"
 #include "CommsController.h"
 #include "FormHelper.h"
+#include "ExecutionProgress.h"
 #include <msclr\marshal_cppstd.h>
 namespace AutoCutterApp {
 
@@ -79,7 +80,7 @@ namespace AutoCutterApp {
 	private: System::Windows::Forms::ComboBox^  serialPortsList;
 	private: System::Windows::Forms::Label^  serialPortLabel;
 	private: System::ComponentModel::BackgroundWorker^  executeCuttingWorker;
-
+	private: ExecutionProgress^ progressDialog;
 
 			 Logger* log;
 		
@@ -204,7 +205,7 @@ namespace AutoCutterApp {
 			// serialPortsList
 			// 
 			this->serialPortsList->FormattingEnabled = true;
-			this->serialPortsList->Items->AddRange(System::IO::Ports::SerialPort::GetPortNames());
+			this->serialPortsList->Items->AddRange(gcnew cli::array< System::Object^  >(1) {L"COM5"});
 			this->serialPortsList->Location = System::Drawing::Point(814, 3);
 			this->serialPortsList->Name = L"serialPortsList";
 			this->serialPortsList->Size = System::Drawing::Size(121, 24);
@@ -228,6 +229,11 @@ namespace AutoCutterApp {
 			// executeCuttingWorker
 			// 
 			this->executeCuttingWorker->DoWork += gcnew System::ComponentModel::DoWorkEventHandler(this, &Form1::executeCuttingWorker_DoWork);
+			this->executeCuttingWorker->ProgressChanged += gcnew System::ComponentModel::ProgressChangedEventHandler(this, &Form1::executeCuttingWorker_ProgressChanged);
+			//
+			//execute progress dialog
+			//
+			this->progressDialog = gcnew ExecutionProgress();
 			// 
 			// Form1
 			// 
@@ -289,7 +295,9 @@ private: System::Void ExecuteButton_Click(System::Object^  sender, System::Event
 
 			 if(executeCuttingWorker)
 			 {
+
 				 executeCuttingWorker->RunWorkerAsync();
+				 progressDialog->ShowDialog();
 			 }
 		 }
 
@@ -342,9 +350,23 @@ private: System::Void executeCuttingWorker_DoWork(System::Object^  sender, Syste
 				 commsController->AddLine(scaledTemp.at(i));
 			 }
 
-			 commsController->SendAllPackets();
+			 System::Collections::Generic::List<GenericWrapper<Packet> ^>^ packets = commsController->GetPackets();
+			 
+			 int percentageFinished = 0;
+			 for(int i = 0; i < packets->Count; i++)
+			 {
+				 commsController->SendPacket(*(packets[i]->GetInternal()));
+				 
+				 if((i * 100) / packets->Count > percentageFinished)
+				 {
+					 executeCuttingWorker->ReportProgress(percentageFinished++);
+				 }
+			 }
 
+		 }
+private: System::Void executeCuttingWorker_ProgressChanged(System::Object^  sender, System::ComponentModel::ProgressChangedEventArgs^  e) {
 
+			 progressDialog->UpdateOverallProgress(e->ProgressPercentage);
 		 }
 };
 

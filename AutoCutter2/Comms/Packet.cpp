@@ -136,7 +136,7 @@ bool Packet::TryParseDataToPacket(vector<unsigned char>& pData)
 
 	_log->Log(std::string("Parsing number of data bytes"));
 	_totalDataBytes = *iterator;
-	if(_totalDataBytes <= 0)
+	if(_totalDataBytes < 0)
 	{
 		_log->Log(std::string("Number of data bytes is less than or equal to 0"));
 		return false;
@@ -146,8 +146,8 @@ bool Packet::TryParseDataToPacket(vector<unsigned char>& pData)
 	
 	_log->Log(std::string("Parsing data"));
 	_data.insert(_data.begin(), iterator, pData.end() - PACKET_END_STREAM_LENGTH + 1);
-	numberOfDataBytes = _data.size();
-	numberOfBytesProcessed += _data.size() + PACKET_END_STREAM_LENGTH; 
+	numberOfDataBytes = _data.size() - sizeof(_totalDataBytes);
+	numberOfBytesProcessed += numberOfDataBytes + PACKET_END_STREAM_LENGTH; 
 
 	_log->Log(std::string("Validating checksums"));
 	if(numberOfDataBytes != _totalDataBytes || numberOfBytesProcessed != _totalNumberOfBytes)

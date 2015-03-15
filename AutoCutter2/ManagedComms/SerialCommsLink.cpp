@@ -67,7 +67,7 @@ void SerialCommsLink::CloseConnection()
 void SerialCommsLink::ReceiveByte(unsigned char pByte)
 {
 	_log->Log(std::string("SerialCommsLink::ReceiveByte - Start"));
-
+	_log->Log(std::string("byte received is %i"), pByte);
 	if(!_packetStarted)
 	{
 		_log->Log(std::string("Checking for start byte"));

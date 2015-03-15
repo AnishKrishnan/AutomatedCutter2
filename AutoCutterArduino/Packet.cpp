@@ -125,7 +125,7 @@ bool Packet::TryParseDataToPacket(unsigned char * pData, unsigned char pLength)
 		numberOfBytesProcessed++;
 
 		_totalDataBytes = pData[index];
-		if(_totalDataBytes <= 0)
+		if(_totalDataBytes < 0)
 		{
 			return false;
 		}

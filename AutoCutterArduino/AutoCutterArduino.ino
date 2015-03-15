@@ -1,3 +1,4 @@
+#include <SoftwareSerial.h>
 #include "CommsController.h"
 #include "Packet.h"
 

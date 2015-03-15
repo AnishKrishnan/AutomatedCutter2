@@ -80,6 +80,7 @@
     <ClInclude Include="CommsController.h" />
     <ClInclude Include="CommsLinkBase.h" />
     <ClInclude Include="ICommsListener.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="QueueList.h" />
     <ClInclude Include="SerialComms.h" />
@@ -88,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="CommsController.cpp" />
     <ClCompile Include="CommsLinkBase.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="SerialComms.cpp" />
   </ItemGroup>

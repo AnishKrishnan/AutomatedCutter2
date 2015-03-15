@@ -1,12 +1,12 @@
 #pragma once
-
+#include "GenericBase.h"
 #include "Packet.h"
 #include "QueueList.h"
 
 #include "ICommsListener.h"
 
 #define MAX_COMMS_LISTENERS 255
-class CommsLinkBase
+class CommsLinkBase : public GenericBase
 {
 public:
 	

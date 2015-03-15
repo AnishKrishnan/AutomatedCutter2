@@ -27,9 +27,6 @@
     <ClInclude Include="CommsController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommsLinkBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -27,7 +27,7 @@ private:
 
 #pragma region Private Methods
 
-	void ReceiveByte(char data);
+	void ReceiveByte(unsigned char data);
 
 	void Construct(System::String^ pPortName, int pBaudRate);
 
@@ -39,7 +39,7 @@ private:
 
 	System::IO::Ports::SerialPort^ _serialPort;	
 
-	GenericWrapper<vector<char>>^ _receivedData;
+	GenericWrapper<vector<unsigned char>>^ _receivedData;
 
 	bool _packetStarted;
 

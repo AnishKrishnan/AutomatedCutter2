@@ -1,12 +1,19 @@
 #pragma once
 #include "Logger.h"
 
+typedef struct uchar_array_t
+{
+	unsigned char * data;
+	unsigned char length;
+
+}uchar_array_t;
+	
 static class CommonHelper 
 {
 public:
-	
-	template <typename T> static void ConvertValueToCharArray(T pValue, char* pArray, Logger* pLog);
-	template <typename T> static T ConvertCharArrayToValue(char* pCharArray, Logger* pLog);
+
+	template <typename T> static void ConvertValueToCharArray(T pValue, unsigned char* pArray, Logger* pLog);
+	template <typename T> static T ConvertCharArrayToValue(unsigned char* pCharArray, Logger* pLog);
 
 private:
 
@@ -14,7 +21,7 @@ private:
 };
 
 
-template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, char* pArray, Logger* pLog)
+template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, unsigned char* pArray, Logger* pLog)
 {
 	if(pLog == NULL)
 	{
@@ -29,7 +36,7 @@ template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, char*
 	}
 
 	pLog->Log(std::string("Initialising array and pointer"));
-	char* x = (char*)&pValue;
+	unsigned char* x = (unsigned char*)&pValue;
 
 	pLog->Log(std::string("Creating array"));
 
@@ -41,7 +48,7 @@ template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, char*
 	pLog->Log(std::string("CommonHelper::ConvertFloatToCharArray - Finish"));
 }
 
-template <typename T> T CommonHelper::ConvertCharArrayToValue(char* pCharArray, Logger* pLog)
+template <typename T> T CommonHelper::ConvertCharArrayToValue(unsigned char* pCharArray, Logger* pLog)
 {
 	if(pLog == NULL)
 	{
@@ -56,7 +63,7 @@ template <typename T> T CommonHelper::ConvertCharArrayToValue(char* pCharArray, 
 	}
 
 	T value;
-	char* pointerToValue = (char*)&value;
+	unsigned char* pointerToValue = (unsigned char*)&value;
 	for(int i = 0; i < sizeof(T); i++)
 	{
 		pointerToValue[i] = pCharArray[i];

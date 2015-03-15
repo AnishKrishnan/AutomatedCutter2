@@ -47,14 +47,14 @@ void CommsController::AddCoordinate(CustomPoint3d<float>& pStartPoint, CustomPoi
 	Packet* packetToAdd = new Packet();
 	packetToAdd->SetPacketType(PACKETTYPE_PATH_REQUEST);
 
-	vector<char> packetData;
+	vector<unsigned char> packetData;
 
 	_log->Log(std::string("Adding start point to packet data"));
-	vector<char> startPointData = ConvertPointToData(pStartPoint);
+	vector<unsigned char> startPointData = ConvertPointToData(pStartPoint);
 	packetData.insert(packetData.end(), startPointData.begin(), startPointData.end());
 
 	_log->Log(std::string("Adding end point to packet data"));
-	vector<char> endPointData = ConvertPointToData(pEndPoint);
+	vector<unsigned char> endPointData = ConvertPointToData(pEndPoint);
 	packetData.insert(packetData.end(), endPointData.begin(), endPointData.end());
 
 	packetToAdd->SetData(packetData);
@@ -98,11 +98,11 @@ void CommsController::RecievedDataCallback(Packet& pPacket)
 	_log->Log(std::string("CommsController::ReceivedDataCallback - Finish"));
 }
 
-vector<char> CommsController::ConvertPointToData(CustomPoint3d<float>& pPoint)
+vector<unsigned char> CommsController::ConvertPointToData(CustomPoint3d<float>& pPoint)
 {
 	_log->Log(std::string("CommsController::ConvertPointToData - Start"));
-	vector<char> convertedData;
-	char floatData[sizeof(float)];
+	vector<unsigned char> convertedData;
+	unsigned char floatData[sizeof(float)];
 
 	_log->Log(std::string("Converting x coordinate"));
 	CommonHelper::ConvertValueToCharArray<float>(pPoint.GetX(), floatData, _log);
@@ -126,15 +126,15 @@ void CommsController::SendPacket(Packet& pPacket)
 
 	_ackReceived = false;
 	_commsLink->SendData(pPacket);
-	//_packetAckTimer.Start();
+	_packetAckTimer.Start();
 
-	////hold until ack received or timeout
-	//while(!_ackReceived)
-	//{
-	//}
+	//hold until ack received or timeout
+	while(!_ackReceived)
+	{
+	}
 
-	//_ackReceived = false;
-	//_packetAckTimer.Stop();
+	_ackReceived = false;
+	_packetAckTimer.Stop();
 	
 	_log->Log(std::string("CommsController::SendPacket - Finish"));
 }

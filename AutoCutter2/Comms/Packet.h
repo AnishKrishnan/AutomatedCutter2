@@ -17,37 +17,37 @@ typedef enum
 									Type == PACKETTYPE_PATH_COMPLETED  \
 									)		
 
-static const char PACKET_START_BYTE = 0xFF;
+static const char PACKET_START_BYTE = '%';
 	
 static const int PACKET_END_STREAM_LENGTH = 4;
-static char PACKET_END_STREAM [] = {0xFF,0xFF,0xFF,0xFF};
+static unsigned char PACKET_END_STREAM [] = {'%','%','%','%'};
 
 class Packet :	public GenericBase
 {
 public:
 	Packet(void);
 
-	char* ConstructPacket(vector<char>& pData);
-	char* ConstructPacket();
-	bool TryParseDataToPacket(vector<char>& pData);
+	uchar_array_t ConstructPacket(vector<unsigned char>& pData);
+	uchar_array_t ConstructPacket();
+	bool TryParseDataToPacket(vector<unsigned char>& pData);
 	
 	PacketType GetPacketType();
 	void SetPacketType(PacketType pPacketType);
 
-	vector<char>& GetData();
-	void SetData(vector<char>& pData);
+	vector<unsigned char>& GetData();
+	void SetData(vector<unsigned char>& pData);
 
 
 
 private:
 
 
-	char _totalNumberOfBytes;
+	unsigned char _totalNumberOfBytes;
 
 	PacketType _packetType;
 
-	char _totalDataBytes;
+	unsigned char _totalDataBytes;
 
-	vector<char> _data, _fullPacketData;
+	vector<unsigned char> _data, _fullPacketData;
 };
 

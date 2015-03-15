@@ -12,6 +12,7 @@
 #define _VSARDUINO_H_
 #define __AVR_ATmega328p__
 #define __AVR_ATmega328P__
+#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -69,6 +70,7 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <Packet.cpp>
 #include <Packet.h>
 #include <Queue.h>
+#include <QueueList.h>
 #include <SerialComms.cpp>
 #include <SerialComms.h>
 #endif

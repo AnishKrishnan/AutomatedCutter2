@@ -33,7 +33,7 @@ public:
 private: 
 #pragma region Private Methods
 
-	vector<char> ConvertPointToData(CustomPoint3d<float>& pPoint);
+	vector<unsigned char> ConvertPointToData(CustomPoint3d<float>& pPoint);
 
 	static void PacketAckTimerElapsed(System::Object^  sender, System::Timers::ElapsedEventArgs^  e);
 

@@ -1,26 +1,22 @@
 #include "CommsLinkBase.h"
 
 
-CommsLinkBase::CommsLinkBase() : _receivedDataListeners(MAX_COMMS_LISTENERS)
+CommsLinkBase::CommsLinkBase() 
 {
 }
 
-void CommsLinkBase::AddReceivedDataListener(ICommsListener* pCommsListener)
+void CommsLinkBase::AddReceivedDataListener(ICommsListener& pCommsListener)
 {
-	
-	if(pCommsListener != NULL)
-	{
-		_receivedDataListeners.Push(pCommsListener);
-	}
-
+	_receivedDataListeners.push(pCommsListener);
 }
 void CommsLinkBase::FireReceivedDataEvent(Packet& pPacket)
 {
-
-	for(int i = 0; i < _receivedDataListeners.Size(); i++)
+	for(int i = 0; i < _receivedDataListeners.count(); i++)
 	{
-		ICommsListener * listener = _receivedDataListeners.Pop();
-		listener->RecievedDataCallback(pPacket);
-		_receivedDataListeners.Push(listener);
+		ICommsListener & listener = _receivedDataListeners.pop();
+
+		listener.RecievedDataCallback(pPacket);
+
+		_receivedDataListeners.push(listener);
 	}
 }

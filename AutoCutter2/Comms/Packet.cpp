@@ -32,12 +32,12 @@ void Packet::SetPacketType(PacketType  pPacketType)
 	_packetType = pPacketType;
 }
 
-vector<char>& Packet::GetData()
+vector<unsigned char>& Packet::GetData()
 {
 	return _data;
 }
 
-void Packet::SetData(vector<char>& pData)
+void Packet::SetData(vector<unsigned char>& pData)
 {
 	
 	_data = pData;
@@ -47,7 +47,7 @@ void Packet::SetData(vector<char>& pData)
 
 #pragma region Packet Building
 
-char* Packet::ConstructPacket()
+uchar_array_t Packet::ConstructPacket()
 {
 	_log->Log(std::string("Packet::ConstructPacket - Start"));
 
@@ -62,11 +62,11 @@ char* Packet::ConstructPacket()
 	_fullPacketData.insert(_fullPacketData.begin(), _totalDataBytes);
 
 	_log->Log(std::string("Adding packet type"));
-	char packetTypeByte = (char)_packetType;
+	unsigned char packetTypeByte = (unsigned char)_packetType;
 	_fullPacketData.insert(_fullPacketData.begin(), packetTypeByte);
 
 	_log->Log(std::string("Adding total packet size"));
-	_totalNumberOfBytes = (char)_fullPacketData.size();
+	_totalNumberOfBytes = (unsigned char)_fullPacketData.size();
 
 	_fullPacketData.insert(_fullPacketData.begin(), _totalNumberOfBytes);
 
@@ -76,20 +76,23 @@ char* Packet::ConstructPacket()
 	_log->Log(std::string("full packet data size = %i"), _fullPacketData.size());
 	_log->Log(std::string("Packet::ConstructPacket - Finish"));
 
-	return &(*_fullPacketData.begin());
+	uchar_array_t data;
+	data.data = &(*_fullPacketData.begin());
+	data.length = (unsigned char)_fullPacketData.size();
+	return data;
 }
 
-char* Packet::ConstructPacket(vector<char>& pData)
+uchar_array_t Packet::ConstructPacket(vector<unsigned char>& pData)
 {
-	_log->Log(std::string("Packet::ConstructPacket(vector<char>& pData) - Start"));
+	_log->Log(std::string("Packet::ConstructPacket(vector<unsigned char>& pData) - Start"));
 
 	_log->Log(std::string("Setting packet data"));
 	SetData(pData);
 
 	_log->Log(std::string("Constructing packet"));
-	char* packet = ConstructPacket();
+	uchar_array_t packet = ConstructPacket();
 	
-	_log->Log(std::string("Packet::ConstructPacket(vector<char>& pData) - Finish"));
+	_log->Log(std::string("Packet::ConstructPacket(vector<unsigned char>& pData) - Finish"));
 
 	return packet;
 }
@@ -97,13 +100,13 @@ char* Packet::ConstructPacket(vector<char>& pData)
 
 #pragma region Parsing Raw Data to Packet
 
-bool Packet::TryParseDataToPacket(vector<char>& pData)
+bool Packet::TryParseDataToPacket(vector<unsigned char>& pData)
 {
 	_log->Log(std::string("Packet::TryParseDataToPacket - Start"));
 	_log->Log(std::string("pData size = %i"), pData.size());
 	int numberOfBytesProcessed = 0, numberOfDataBytes = 0;
 
-	vector<char>::iterator iterator = pData.begin();
+	vector<unsigned char>::iterator iterator = pData.begin();
 	
 	_log->Log(std::string("Parsing start byte"));
 	if(*iterator != PACKET_START_BYTE)

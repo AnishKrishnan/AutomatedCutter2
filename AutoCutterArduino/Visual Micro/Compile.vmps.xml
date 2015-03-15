@@ -1,12 +1,133 @@
 <VisualMicro>
   <Program Name="AutoCutterArduino" Ext=".ino" Location="C:\Code Base\trunk\Automated Cutter 2\AutoCutter2\AutoCutterArduino">
     <Platform Name="arduino10x" Package="arduino" Platform="avr" Architecture="avr">
-      <Board Name="uno" Description="Arduino Uno" CoreFolder="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" VariantFullPath="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" McuIdePath="C:\Program Files (x86)\Arduino" McuSketchBookPath="C:\Users\Anish\Documents\Arduino" name="Arduino Uno" upload.protocol="arduino" upload.maximum_size="32256" upload.speed="115200" bootloader.low_fuses="0xff" bootloader.high_fuses="0xde" bootloader.extended_fuses="0x05" bootloader.path="optiboot" bootloader.file="optiboot_atmega328.hex" bootloader.unlock_bits="0x3F" bootloader.lock_bits="0x0F" build.mcu="atmega328p" build.f_cpu="16000000L" build.core="arduino" build.variant="standard" runtime.ide.path="C:\Program Files (x86)\Arduino" build.system.path="C:\Program Files (x86)\Arduino\hardware\arduino\system" runtime.ide.version="105" originalid="uno" vm.platform.root.path="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x" ide.hint="Arduino 0023 and 1.0.x Ide" ide.location.key="Arduino" ide.location.ide.winreg="Arduino 1.0.x Application" ide.location.sketchbook.winreg="Arduino 1.0.x Sketchbook" ide.location.sketchbook.preferences="sketchbook.path" ide.location.sketchbook.default="%MYDOCUMENTS%\arduino" ide.location.preferences="%VM_APPDATA_ROAMING%\arduino\preferences.txt" ide.default.package="arduino" ide.default.platform="avr" ide.multiplatform="true" ide.includes="arduino.h" ide.platformswithoutpackage="true" ide.includes.fallback="wprogram.h" ide.extension="ino" ide.extension.fallback="pde" ide.versionLTEQ="149" ide.exe="arduino.exe" ide.hosts="atmel" ide.url="http://arduino.cc/en/Main/Software" vm.debug="true" software="ARDUINO" ide.appid="arduino10x" location.sketchbook="C:\Users\Anish\Documents\Arduino" build.core.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" build.core.parentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores" build.core.coresparentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino" vm.core.include="arduino.h" build.board="AVR_UNO" vm.boardsource.path="C:\Program Files (x86)\Arduino\hardware\arduino" runtime.platform.path="C:\Program Files (x86)\Arduino\hardware\arduino" vm.platformname.name="avr" build.arch="AVR" build.variant.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" vm.runtime.compiler.showwarnings="false" serial.port.file="COM4" serial.port="COM4" compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" includes=" -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino&quot;  -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard&quot; " build.path="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno" build.project_name="AutoCutterArduino" build.variant.path="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" archive_file="core.a" object_file="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\SerialComms.cpp.o" source_file="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\SerialComms.cpp" build.architecture="avr" vmresolved.compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" vmresolved.tools.path="C:\Program Files (x86)\Arduino\hardware\tools\avr" object_files="&quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\AutoCutterArduino.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\CommsController.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\CommsLinkBase.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\Packet.cpp.o&quot; " />
+      <Board Name="uno" Description="Arduino Uno" CoreFolder="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" VariantFullPath="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" McuIdePath="C:\Program Files (x86)\Arduino" McuSketchBookPath="C:\Users\Anish\Documents\Arduino" name="Arduino Uno" upload.protocol="arduino" upload.maximum_size="32256" upload.speed="115200" bootloader.low_fuses="0xff" bootloader.high_fuses="0xde" bootloader.extended_fuses="0x05" bootloader.path="optiboot" bootloader.file="optiboot_atmega328.hex" bootloader.unlock_bits="0x3F" bootloader.lock_bits="0x0F" build.mcu="atmega328p" build.f_cpu="16000000L" build.core="arduino" build.variant="standard" runtime.ide.path="C:\Program Files (x86)\Arduino" build.system.path="C:\Program Files (x86)\Arduino\hardware\arduino\system" runtime.ide.version="105" originalid="uno" vm.platform.root.path="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x" ide.hint="Arduino 0023 and 1.0.x Ide" ide.location.key="Arduino" ide.location.ide.winreg="Arduino 1.0.x Application" ide.location.sketchbook.winreg="Arduino 1.0.x Sketchbook" ide.location.sketchbook.preferences="sketchbook.path" ide.location.sketchbook.default="%MYDOCUMENTS%\arduino" ide.location.preferences="%VM_APPDATA_ROAMING%\arduino\preferences.txt" ide.default.package="arduino" ide.default.platform="avr" ide.multiplatform="true" ide.includes="arduino.h" ide.platformswithoutpackage="true" ide.includes.fallback="wprogram.h" ide.extension="ino" ide.extension.fallback="pde" ide.versionLTEQ="149" ide.exe="arduino.exe" ide.hosts="atmel" ide.url="http://arduino.cc/en/Main/Software" vm.debug="true" software="ARDUINO" ide.appid="arduino10x" location.sketchbook="C:\Users\Anish\Documents\Arduino" build.core.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" build.core.parentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores" build.core.coresparentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino" vm.core.include="arduino.h" build.board="AVR_UNO" vm.boardsource.path="C:\Program Files (x86)\Arduino\hardware\arduino" runtime.platform.path="C:\Program Files (x86)\Arduino\hardware\arduino" vm.platformname.name="avr" build.arch="AVR" build.variant.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" vm.runtime.compiler.showwarnings="false" serial.port.file="COM4" serial.port="COM4" compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" includes=" -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino&quot;  -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard&quot;  -I&quot;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers\VM_DBG&quot;  -I&quot;C:\Program Files (x86)\Arduino\libraries&quot;  -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\libraries&quot;  -I&quot;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers&quot;  -I&quot;C:\Users\Anish\Documents\Arduino\libraries&quot; " build.path="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno" build.project_name="AutoCutterArduino" build.variant.path="C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard" archive_file="core.a" object_file="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\VM_DBG\VM_DBG.cpp.o" source_file="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers\VM_DBG\VM_DBG.cpp" object_files="&quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\AutoCutterArduino.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\CommsController.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\CommsLinkBase.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\Packet.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\SerialComms.cpp.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\VM_DBG\VM_mem_check.c.o&quot; &quot;C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno\VM_DBG\VM_DBG.cpp.o&quot; " build.architecture="avr" vmresolved.compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" vmresolved.tools.path="C:\Program Files (x86)\Arduino\hardware\tools\avr" />
     </Platform>
-    <Compile CompilerErrors="0" ConfigurationName="Debug" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno" IsDebugStart="0" IncludeDebug="0" IncludesDebug="0" SketchName="AutoCutterArduino" IsCompiled="1" />
-    <Debug DebugEnabled="0" EnableBreak="1" />
+    <Compile CompilerErrors="0" ConfigurationName="Debug" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\Anish\AppData\Local\VMicro\Arduino\Builds\AutoCutterArduino\uno" IsDebugStart="1" SketchName="AutoCutterArduino" ReportDigitalPins="0" ReportAnalogPins="0" ReportI2C="0" ReportFreeMemory="0" IncludeDebug="1" LastDebugPreProcessorDefinitions="VM_DEBUG;VM_DEBUG_ENABLE 1;VM_DEBUG_BANDWIDTH_THROTTLE_MS 50;VM_DEBUGGER_TYPE_HARDWARESERIAL 0;VM_DEBUGGER_TYPE_SOFTWARESERIAL 1;VM_DEBUGGER_TYPE_FASTSERIAL 2;VM_DEBUGGER_TYPE_USB 3;VM_DEBUGGER_TYPE_TEENSY 4;VM_DEBUGGER_TYPE_UART 5;VM_DEBUGGER_TYPE_USART 6;VM_DEBUGGER_TYPE_USBSERIAL 7;VM_DEBUGGER_TYPE_TTYUART 8;VM_DEBUGGER_TYPE_NET_CONSOLE 9;VM_DEBUGGER_TYPE_Uart 10;VM_DEBUGGER_TYPE_COSA 11;VM_DEBUGGER_TYPE VM_DEBUGGER_TYPE_HARDWARESERIAL;VM_DEBUG_BREAKPAUSE;" IncludesDebug="1" IsCompiled="1" />
+    <Debug EnableBreak="1" DebugEnabled="1" RemotePortSpeedWrittenToDebugSource="115200" />
     <VCCodeModel>
       <VCCodeMacros />
     </VCCodeModel>
+    <BreakPoints>
+      <BreakPoint Index="1" Name="Form1.h, line 345" Id="090829d6-ca73-44d1-af6f-4228444483af" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="c:\code base\trunk\automated cutter 2\autocutter2\autocutter2\form1.h" FileLine="345" FileColumn="1" FunctionName="class Form1::executeCuttingWorker_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e)" FunctionLineOffset="45" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='090829d6-ca73-44d1-af6f-4228444483af'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>338				 }
+339	
+340				 for(int i = 0; i &lt; scaledTemp.size(); i++)
+341				 {
+342					 commsController-&gt;AddLine(scaledTemp.at(i));
+343				 }
+344	
+--&gt;345				 commsController-&gt;SendAllPackets();
+346	
+347	
+348			 }
+349	};
+350	
+351	
+352	}
+353	
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="2" Name="CommsController.cpp, line 136" Id="c50124a9-5db6-4198-b7ee-38b6a9e39377" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="c:\code base\trunk\automated cutter 2\autocutter2\autocutter2\managedcomms\commscontroller.cpp" FileLine="136" FileColumn="1" FunctionName="SendPacket(Packet&amp; pPacket)" FunctionLineOffset="13" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c50124a9-5db6-4198-b7ee-38b6a9e39377'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>129		_packetAckTimer.Start();
+130	
+131		//hold until ack received or timeout
+132		while(!_ackReceived)
+133		{
+134		}
+135	
+--&gt;136		_ackReceived = false;
+137		_packetAckTimer.Stop();
+138		
+139		_log-&gt;Log(std::string("CommsController::SendPacket - Finish"));
+140	}
+141	
+142	void CommsController::SendAllPackets()
+143	{
+144		_log-&gt;Log(std::string("CommsController::SendAllPackets - Start"));
+145	
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="3" Name="Packet.cpp, line 82" Id="52958a33-559f-4ada-a1dd-d82d12669c90" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="c:\code base\trunk\automated cutter 2\autocutter2\autocutter2\comms\packet.cpp" FileLine="82" FileColumn="1" FunctionName="ConstructPacket()" FunctionLineOffset="32" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='52958a33-559f-4ada-a1dd-d82d12669c90'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>75	
+76		_log-&gt;Log(std::string("full packet data size = %i"), _fullPacketData.size());
+77		_log-&gt;Log(std::string("Packet::ConstructPacket - Finish"));
+78	
+79		uchar_array_t data;
+80		data.data = &amp;(*_fullPacketData.begin());
+81		data.length = (unsigned char)_fullPacketData.size();
+--&gt;82		return data;
+83	}
+84	
+85	uchar_array_t Packet::ConstructPacket(vector&lt;unsigned char&gt;&amp; pData)
+86	{
+87		_log-&gt;Log(std::string("Packet::ConstructPacket(vector&lt;unsigned char&gt;&amp; pData) - Start"));
+88	
+89		_log-&gt;Log(std::string("Setting packet data"));
+90		SetData(pData);
+91	
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="4" Name="CommsController.cpp, line 86" Id="67054cb1-f7f3-4e70-b4be-8259cd5eebee" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="c:\code base\trunk\automated cutter 2\autocutter2\autocutter2\managedcomms\commscontroller.cpp" FileLine="86" FileColumn="1" FunctionName="RecievedDataCallback(Packet&amp; pPacket)" FunctionLineOffset="2" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='67054cb1-f7f3-4e70-b4be-8259cd5eebee'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>79		}
+80	
+81		_log-&gt;Log(std::string("CommsController::AddLine - Finish"));
+82	}
+83	
+84	void CommsController::RecievedDataCallback(Packet&amp; pPacket)
+85	{
+--&gt;86		_log-&gt;Log(std::string("CommsController::ReceivedDataCallback - Start"));
+87		
+88		switch(pPacket.GetPacketType())
+89		{
+90			case PACKETTYPE_ACK:
+91				_ackReceived = true;
+92				break;
+93	
+94			default:
+95				break;
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="5" Name="AutoCutterArduino.ino, line 11" Id="c2043c56-1118-47ad-bf1e-138d6ef7904c" Enabled="1" Message="&quot;ello&quot;" MessageTextType="0" PreProcessedMessage="&quot;ello&quot;" Condition="" ConditionType="1" CurrentHits="0" File="c:\code base\trunk\automated cutter 2\autocutter2\autocutterarduino\autocutterarduino.ino" FileLine="11" FileColumn="1" FunctionName="setup()" FunctionLineOffset="5" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c2043c56-1118-47ad-bf1e-138d6ef7904c'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>4	CommsController _comms(Serial);
+5	
+6	void setup()
+7	{
+8	
+9	  /* add setup code here */
+10		pinMode(13, OUTPUT);
+--&gt;11		_comms.OpenConnection();
+12	}
+13	
+14	void loop()
+15	{
+16	
+17	  /* add main program code here */
+18	
+19		_comms.ProcessOutbox();
+20	
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="6" Name="AutoCutterArduino.ino, line 19" Id="0324055f-4121-4cc6-9480-24a33f188288" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="c:\code base\trunk\automated cutter 2\autocutter2\autocutterarduino\autocutterarduino.ino" FileLine="19" FileColumn="1" FunctionName="loop()" FunctionLineOffset="5" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c9b12f47-c9c0-4aac-ac9a-4d576626f0ca'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>12	}
+13	
+14	void loop()
+15	{
+16	
+17	  /* add main program code here */
+18	
+--&gt;19		_comms.ProcessOutbox();
+20	
+21	}
+22	
+23	void serialEvent()
+24	{
+25		while(Serial.available())
+26		{
+27			_comms.RecievedByte((byte)Serial.read());
+28		}
+</Source>
+      </BreakPoint>
+    </BreakPoints>
   </Program>
 </VisualMicro>

@@ -7,7 +7,7 @@ public:
 
 	T Pop();
 	T Peek();
-	void Push(T& pElement);
+	void Push(T pElement);
 	int Size();
 	bool IsEmpty();
 	bool IsFull();
@@ -57,7 +57,7 @@ template <typename T> T Queue<T>::Peek()
 	return headElement;
 }
 
-template <typename T> void Queue<T>::Push(T& pElement)
+template <typename T> void Queue<T>::Push(T pElement)
 {
 	if(!IsFull())
 	{

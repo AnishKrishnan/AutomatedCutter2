@@ -1,12 +1,13 @@
 #pragma once
 #include "stdlib.h"
+#include "Arduino.h"
 
 class CommonHelper 
 {
 public:
 	
-	template <typename T> static void ConvertValueToCharArray(T pValue, char* pArray);
-	template <typename T> static T ConvertCharArrayToValue(char* pCharArray);
+	template <typename T> static void ConvertValueToCharArray(T pValue, byte* pArray);
+	template <typename T> static T ConvertCharArrayToValue(byte* pCharArray);
 
 	template <typename T> static void ClearArray(T* pData, int pLength);
 private:
@@ -16,11 +17,11 @@ private:
 };
 
 
-template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, char* pArray)
+template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, byte* pArray)
 {
 	if(pArray != NULL)
 	{
-		char* x = (char*)&pValue;
+		byte* x = (byte*)&pValue;
 
 		for(int i = 0; i < sizeof(T); i++)
 		{
@@ -29,7 +30,7 @@ template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, char*
 	}
 }
 
-template <typename T> T CommonHelper::ConvertCharArrayToValue(char* pCharArray)
+template <typename T> T CommonHelper::ConvertCharArrayToValue(byte* pCharArray)
 {
 	T value;
 	if(pCharArray != NULL)

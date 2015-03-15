@@ -32,19 +32,20 @@ void SerialCommsLink::SendData(Packet& pPacket)
 	_log->Log(std::string("SerialCommsLink::SendData - Start"));
 
 	_log->Log(std::string("Constructing packet"));
-	char * data = pPacket.ConstructPacket();
+	uchar_array_t data = pPacket.ConstructPacket();
 
-	if(data == NULL)
+	if(data.data == NULL)
 	{
 		throw AutoCutterException("Could not construct packet");
 	}
 
 	_log->Log(std::string("Sending data"));
-	System::String^ outputString = gcnew System::String(data);
-	
-	_serialPort->Write(outputString);
+	array<unsigned char>^ output = gcnew array<unsigned char>(data.length);
+	System::Runtime::InteropServices::Marshal::Copy(System::IntPtr((void *) data.data), output, 0, data.length);
 
-	delete outputString;
+	_serialPort->Write(output, 0, output->Length);
+
+	delete output;
 
 	_log->Log(std::string("SerialCommsLink::SendData - Finish"));
 }
@@ -63,11 +64,10 @@ void SerialCommsLink::CloseConnection()
 	_log->Log(std::string("SerialCommsLink::CloseConnection - Finish"));
 }
 
-void SerialCommsLink::ReceiveByte(char pByte)
+void SerialCommsLink::ReceiveByte(unsigned char pByte)
 {
 	_log->Log(std::string("SerialCommsLink::ReceiveByte - Start"));
 
-	
 	if(!_packetStarted)
 	{
 		_log->Log(std::string("Checking for start byte"));
@@ -126,7 +126,7 @@ void SerialCommsLink::Construct(System::String^ pPortName, int pBaudRate)
 	}
 	_serialPort = gcnew System::IO::Ports::SerialPort(pPortName, pBaudRate);
 
-	_receivedData = gcnew GenericWrapper<vector<char>>(new vector<char>());
+	_receivedData = gcnew GenericWrapper<vector<unsigned char>>(new vector<unsigned char>());
 
 	_serialPort->DataReceived += gcnew System::IO::Ports::SerialDataReceivedEventHandler(this, &SerialCommsLink::DataReceivedEventHandler);
 }
@@ -135,7 +135,7 @@ void SerialCommsLink::DataReceivedEventHandler(System::Object^  pSender, System:
 {
 	while(_serialPort->BytesToRead)
 	{
-		this->ReceiveByte(_serialPort->ReadByte());
+		this->ReceiveByte((unsigned char)_serialPort->ReadByte());
 	}
 }
 

@@ -1,15 +1,25 @@
 #pragma once
 #include "HardwareSerial.h"
+#include "Packet.h"
+#include "SerialComms.h"
+#include "ICommsListener.h"
+#include "CommsLinkBase.h"
 
-class CommsController
+#define COMMS_MAX_RECEIVED_PACKETS 255
+class CommsController : ICommsListener
 {
 public:
 	CommsController(HardwareSerial& pSerial);
-	~CommsController(void);
+	void RecievedByte(byte pByte);
+	void RecievedDataCallback(Packet& pPacket);
+	void OpenConnection();
+	void ProcessOutbox();
 
 private:
+	void SendResponse(PacketType pPacketType);
+	SerialComms _serialPort;
 
-	HardwareSerial _serial;
-
+	Queue<Packet> _receivedPackets;
+	Queue<Packet> _outputPackets;
 };
 

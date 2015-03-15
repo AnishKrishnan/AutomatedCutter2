@@ -46,7 +46,7 @@
       <AdditionalIncludeDirectories>C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\variants\standard;C:\Code Base\trunk\Automated Cutter 2\AutoCutter2\AutoCutterArduino;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\libraries;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers;C:\Users\Anish\Documents\Arduino\libraries;c:\program files (x86)\arduino\hardware\tools\avr\avr\include\;c:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\;c:\program files (x86)\arduino\hardware\tools\avr\avr\;c:\program files (x86)\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>C:\Code Base\trunk\Automated Cutter 2\AutoCutter2\AutoCutterArduino\Visual Micro\.AutoCutterArduino.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;ARDUINO=105;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;GCC_VERSION=40301;ARDUINO_ARCH_AVR;ARDUINO_AVR_UNO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;_VMDEBUG=1;ARDUINO=105;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;GCC_VERSION=40301;ARDUINO_ARCH_AVR;ARDUINO_AVR_UNO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -71,11 +71,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommonHelper.h" />
+    <ClInclude Include="CommsController.h" />
+    <ClInclude Include="CommsLinkBase.h" />
+    <ClInclude Include="ICommsListener.h" />
     <ClInclude Include="Packet.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="QueueList.h" />
+    <ClInclude Include="SerialComms.h" />
     <ClInclude Include="Visual Micro\.AutoCutterArduino.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommsController.cpp" />
+    <ClCompile Include="CommsLinkBase.cpp" />
     <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="SerialComms.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

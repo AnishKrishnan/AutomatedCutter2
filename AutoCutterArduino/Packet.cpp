@@ -1,9 +1,8 @@
 #include "Packet.h"
-#include "stdlib.h"
 
 Packet::Packet(void)
 {
-	CommonHelper::ClearArray<char>(_data, PACKET_MAX_DATA_LENGTH);
+	CommonHelper::ClearArray<byte>(_data, PACKET_MAX_DATA_LENGTH);
 	_totalNumberOfBytes = 0;
 	_totalDataBytes = 0;
 	_packetType = PACKETTYPE_INVALID;
@@ -24,11 +23,11 @@ void Packet::SetPacketType(PacketType  pPacketType)
 	}
 }
 
-void Packet::GetData(char * pData)
+void Packet::GetData(byte* pData)
 {
 	if(pData != NULL)
 	{
-		for(char i = 0; i < _totalDataBytes; i++)
+		for(byte i = 0; i < _totalDataBytes; i++)
 		{
 			pData[i] = _data[i]; 
 		}
@@ -36,11 +35,11 @@ void Packet::GetData(char * pData)
 
 }
 
-void Packet::SetData(char * pData, char pLength)
+void Packet::SetData(byte * pData, byte pLength)
 {
 	if(pData != NULL && pLength < PACKET_MAX_DATA_LENGTH)
 	{
-		for(char i = 0; i < pLength; i++)
+		for(byte i = 0; i < pLength; i++)
 		{
 			_data[i] = pData[i];
 		}
@@ -52,9 +51,9 @@ void Packet::SetData(char * pData, char pLength)
 
 #pragma region Packet Building
 
-char Packet::ConstructPacket(char * pRawPacket)
+byte Packet::ConstructPacket(byte * pRawPacket)
 {
-	char index = 0;
+	byte index = 0;
 	if(pRawPacket != NULL)
 	{
 		//Adding start byte
@@ -68,12 +67,12 @@ char Packet::ConstructPacket(char * pRawPacket)
 
 		pRawPacket[index++] = _totalDataBytes;
 
-		for(char i = 0; i < _totalDataBytes; i++)
+		for(byte i = 0; i < _totalDataBytes; i++)
 		{
 			pRawPacket[index++] = _data[i];
 		}
 
-		for(char i = 0; i < PACKET_END_STREAM_LENGTH; i++)
+		for(byte i = 0; i < PACKET_END_STREAM_LENGTH; i++)
 		{
 			pRawPacket[index++] = PACKET_END_STREAM[i];
 		}
@@ -83,11 +82,11 @@ char Packet::ConstructPacket(char * pRawPacket)
 
 }
 
-char Packet::ConstructPacket(char * pRawPacket, char * pData, char pLength)
+byte Packet::ConstructPacket(byte * pRawPacket, byte * pData, byte pLength)
 {
 	SetData(pData, pLength);
 
-	char packetLength = ConstructPacket(pRawPacket);
+	byte packetLength = ConstructPacket(pRawPacket);
 
 	return packetLength;
 }
@@ -95,13 +94,14 @@ char Packet::ConstructPacket(char * pRawPacket, char * pData, char pLength)
 
 #pragma region Parsing Raw Data to Packet
 
-bool Packet::TryParseDataToPacket(char * pData, char pLength)
+bool Packet::TryParseDataToPacket(byte * pData, byte pLength)
 {
 	if(pData != NULL && pLength < PACKET_MAX_RAW_LENGTH)
 	{
+
 		int numberOfBytesProcessed = 0, numberOfDataBytes = 0;
 
-		char index = 0;	
+		byte index = 0;	
 
 		if(pData[index] != PACKET_START_BYTE)
 		{
@@ -132,7 +132,7 @@ bool Packet::TryParseDataToPacket(char * pData, char pLength)
 		index++;
 		numberOfBytesProcessed++;
 	
-		for(char i = 0; i < PACKET_MAX_DATA_LENGTH && index < (pLength - PACKET_END_STREAM_LENGTH); i++)
+		for(byte i = 0; i < PACKET_MAX_DATA_LENGTH && index < (pLength - PACKET_END_STREAM_LENGTH); i++)
 		{
 			_data[i] = pData[index++];
 			numberOfDataBytes++;
@@ -140,12 +140,11 @@ bool Packet::TryParseDataToPacket(char * pData, char pLength)
 		}
 
 		numberOfBytesProcessed += PACKET_END_STREAM_LENGTH;
-
+		
 		if(numberOfDataBytes != _totalDataBytes || numberOfBytesProcessed != _totalNumberOfBytes)
 		{
 			return false;
 		}
-	
 		return true;
 	}
 	else

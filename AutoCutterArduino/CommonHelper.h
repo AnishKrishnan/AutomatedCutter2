@@ -6,8 +6,8 @@ class CommonHelper
 {
 public:
 	
-	template <typename T> static void ConvertValueToCharArray(T pValue, byte* pArray);
-	template <typename T> static T ConvertCharArrayToValue(byte* pCharArray);
+	template <typename T> static void ConvertValueToCharArray(T pValue, unsigned char* pArray);
+	template <typename T> static T ConvertCharArrayToValue(unsigned char* pCharArray);
 
 	template <typename T> static void ClearArray(T* pData, int pLength);
 private:
@@ -17,11 +17,11 @@ private:
 };
 
 
-template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, byte* pArray)
+template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, unsigned char* pArray)
 {
 	if(pArray != NULL)
 	{
-		byte* x = (byte*)&pValue;
+		unsigned char* x = (unsigned char*)&pValue;
 
 		for(int i = 0; i < sizeof(T); i++)
 		{
@@ -30,7 +30,7 @@ template <typename T> void CommonHelper::ConvertValueToCharArray(T pValue, byte*
 	}
 }
 
-template <typename T> T CommonHelper::ConvertCharArrayToValue(byte* pCharArray)
+template <typename T> T CommonHelper::ConvertCharArrayToValue(unsigned char* pCharArray)
 {
 	T value;
 	if(pCharArray != NULL)

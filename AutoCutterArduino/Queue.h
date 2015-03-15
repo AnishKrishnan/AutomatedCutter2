@@ -3,6 +3,7 @@
 template<typename T> class Queue
 {
 public:
+
 	Queue<T>(int pNoOfElements);
 
 	T Pop();
@@ -21,6 +22,7 @@ private:
 
 	int _head, _tail;
 };
+
 
 template <typename T> Queue<T>::Queue(int pNoOfElements)
 {

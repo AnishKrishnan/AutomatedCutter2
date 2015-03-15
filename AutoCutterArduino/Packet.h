@@ -22,36 +22,36 @@ typedef enum
 #define PACKET_MAX_DATA_LENGTH	100
 #define PACKET_MAX_RAW_LENGTH	120
 
-static const byte PACKET_START_BYTE = '%';
+static const unsigned char PACKET_START_BYTE = '%';
 	
 static const int PACKET_END_STREAM_LENGTH = 4;
-static byte PACKET_END_STREAM [] = {'%','%','%','%'};
+static unsigned char PACKET_END_STREAM [] = {'%','%','%','%'};
 
 class Packet
 {
 public:
 	Packet(void);
 
-	byte ConstructPacket(byte * pRawPacket, byte * pData, byte pLength);
-	byte ConstructPacket(byte * pRawPacket);
-	bool TryParseDataToPacket(byte * pData, byte pLength);
+	unsigned char ConstructPacket(unsigned char * pRawPacket, unsigned char * pData, unsigned char pLength);
+	unsigned char ConstructPacket(unsigned char * pRawPacket);
+	bool TryParseDataToPacket(unsigned char * pData, unsigned char pLength);
 	
 	PacketType GetPacketType();
 	void SetPacketType(PacketType pPacketType);
 
-	void GetData(byte* pData);
-	void SetData(byte * pData, byte pLength);
+	void GetData(unsigned char* pData);
+	void SetData(unsigned char * pData, unsigned char pLength);
 
 
 
 private:
 
-	byte _totalNumberOfBytes;
+	unsigned char _totalNumberOfBytes;
 
 	PacketType _packetType;
 
-	byte _totalDataBytes;
+	unsigned char _totalDataBytes;
 
-	byte _data[PACKET_MAX_DATA_LENGTH];
+	unsigned char _data[PACKET_MAX_DATA_LENGTH];
 };
 

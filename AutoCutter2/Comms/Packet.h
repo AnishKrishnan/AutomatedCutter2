@@ -17,7 +17,7 @@ typedef enum
 									Type == PACKETTYPE_PATH_COMPLETED  \
 									)		
 
-static const char PACKET_START_BYTE = '%';
+static const unsigned char PACKET_START_BYTE = '%';
 	
 static const int PACKET_END_STREAM_LENGTH = 4;
 static unsigned char PACKET_END_STREAM [] = {'%','%','%','%'};

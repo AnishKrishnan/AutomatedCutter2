@@ -13,16 +13,20 @@ public:
 	virtual void OpenConnection();
 	virtual void CloseConnection();
 	virtual void SendData(Packet& pPacket);
-	void ReceivedByte(byte pData);
+	void ReceivedByte(unsigned char pData);
+
+	void TempAddListener(ICommsListener* pListener);
 
 private:
 
 	HardwareSerial _serialPort;
-	byte _receivedData[PACKET_MAX_RAW_LENGTH];
-	byte _receivedIndex;
+	unsigned char _receivedData[PACKET_MAX_RAW_LENGTH];
+	unsigned char _receivedIndex;
 
 	bool _packetStarted;
-	byte _endStreamCounter;
+	unsigned char _endStreamCounter;
 	int _baudRate;
+
+	ICommsListener* _listener;
 };
 

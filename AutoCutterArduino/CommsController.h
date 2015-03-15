@@ -10,7 +10,7 @@ class CommsController : ICommsListener
 {
 public:
 	CommsController(HardwareSerial& pSerial);
-	void RecievedByte(byte pByte);
+	void RecievedByte(unsigned char pByte);
 	void RecievedDataCallback(Packet& pPacket);
 	void OpenConnection();
 	void ProcessOutbox();

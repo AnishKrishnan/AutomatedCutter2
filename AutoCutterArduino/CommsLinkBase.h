@@ -2,7 +2,7 @@
 
 #include "Packet.h"
 #include "Queue.h"
-#include "QueueList.h"
+
 #include "ICommsListener.h"
 
 #define MAX_COMMS_LISTENERS 255
@@ -18,7 +18,7 @@ public:
 
 	virtual void SendData(Packet& pPacket) = 0;
 
-	void AddReceivedDataListener(ICommsListener& pCommsListener);
+	void AddReceivedDataListener(ICommsListener* pCommsListener);
 
 protected:
 	
@@ -26,7 +26,7 @@ protected:
 
 private:
 
-	QueueList<ICommsListener&> _receivedDataListeners;
+	Queue<ICommsListener*> _receivedDataListeners;
 
 };
 

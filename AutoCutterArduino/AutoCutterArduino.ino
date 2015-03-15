@@ -15,7 +15,6 @@ void loop()
 {
 
   /* add main program code here */
-
 	_comms.ProcessOutbox();
 
 }
@@ -24,6 +23,6 @@ void serialEvent()
 {
 	while(Serial.available())
 	{
-		_comms.RecievedByte((byte)Serial.read());
+		_comms.RecievedByte((unsigned char)Serial.read());
 	}
 }

@@ -7,7 +7,7 @@ GenericBase::GenericBase(void)
 {
 	if(_debugSerial == NULL)
 	{
-		_debugSerial = new SerialDebug(LOGGER_SERIAL_PORT);
+		_debugSerial = DebugPortFactory::GetDebugPort(DEBUG_PORT_SERIAL);
 	}
 
 	Logger::Create(_debugSerial);

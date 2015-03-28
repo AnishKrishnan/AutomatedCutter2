@@ -1,6 +1,7 @@
 #pragma once
 #include "Arduino.h"
 #include "IDebugPort.h"
+#include "Config.h"
 
 class Logger
 {

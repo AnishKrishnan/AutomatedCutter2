@@ -12,8 +12,7 @@ SerialDebug::~SerialDebug(void)
 
 void SerialDebug::Setup(void)
 {
-	_serial.begin(SERIALCOMMS_DEFAULT_BAUD);
-	_serial.println("Debug serial started");
+	_serial.begin(SERIALDEBUG_BAUD);
 }
 
 void SerialDebug::Println(String& pMessage)

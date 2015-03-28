@@ -10,6 +10,7 @@ void setup()
   /* add setup code here */
 	pinMode(13, OUTPUT);
 	_comms.OpenConnection();
+	
 }
 
 void loop()
@@ -17,7 +18,7 @@ void loop()
 
   /* add main program code here */
 	_comms.ProcessOutbox();
-
+	digitalWrite(13, HIGH);
 }
 
 void serialEvent()

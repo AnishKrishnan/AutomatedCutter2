@@ -1,7 +1,7 @@
 #include "CommsLinkBase.h"
 
 
-CommsLinkBase::CommsLinkBase()
+CommsLinkBase::CommsLinkBase() //: GenericBase()
 {
 }
 

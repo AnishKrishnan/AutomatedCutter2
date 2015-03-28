@@ -12,7 +12,6 @@ protected:
 
 private:
 
-	static SoftwareSerial* _bluetoothSerial;
-	static BluetoothDebug* _bluetooth;
+	static HardwareSerial* _debugSerial;
 };
 

@@ -1,22 +1,17 @@
 #include "GenericBase.h"
 
 
-SoftwareSerial* GenericBase::_bluetoothSerial = NULL;
-BluetoothDebug* GenericBase::_bluetooth = NULL;
+HardwareSerial* GenericBase::_debugSerial = NULL;
 
 GenericBase::GenericBase(void)
 {
-	if(_bluetoothSerial == NULL)
+	if(_debugSerial == NULL)
 	{
-		_bluetoothSerial = new SoftwareSerial(BLUETOOTH_RxD, BLUETOOTH_TxD);
+		_debugSerial = &Serial1;
 	}
 
-	if(_bluetooth == NULL)
-	{
-		_bluetooth = new BluetoothDebug(*_bluetoothSerial);
-	}
-	Logger::Create(_bluetooth);
-	_log = Logger::Instance();
+//	Logger::Create(_bluetooth);
+//	_log = Logger::Instance();
 }
 
 

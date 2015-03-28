@@ -6,7 +6,7 @@
 #include "ICommsListener.h"
 
 #define MAX_COMMS_LISTENERS 255
-class CommsLinkBase // : public GenericBase
+class CommsLinkBase  : public GenericBase
 {
 public:
 	

@@ -18,3 +18,13 @@ GenericBase::GenericBase(void)
 GenericBase::~GenericBase(void)
 {
 }
+
+void GenericBase::Log(String& pMessage)
+{
+	_log->Log(pMessage);
+}
+
+void GenericBase::Log(const char* pMessage)
+{
+	_log->Log(pMessage);
+}

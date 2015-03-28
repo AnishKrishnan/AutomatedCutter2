@@ -35,17 +35,17 @@ Logger::~Logger(void)
 {
 }
 
-void Logger::Log(String& pMessage)
+void Logger::Log(LogLevel pLogLevel,String& pMessage)
 {
-#if FULL_TRACE
-	
-	_debugPort->Println(pMessage);
-#endif
+	if(pLogLevel >= LOG_LEVEL)
+	{
+		_debugPort->Println(pMessage);
+	}
 }
 
-void Logger::Log(const char * pMessage)
+void Logger::Log(LogLevel pLogLevel, const char * pMessage)
 {
 	String message = pMessage;
 
-	Log(message);
+	Log(pLogLevel, message);
 }

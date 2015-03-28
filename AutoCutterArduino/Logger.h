@@ -3,6 +3,13 @@
 #include "IDebugPort.h"
 #include "Config.h"
 
+typedef enum
+{
+	LOG_LEVEL_INFO,
+	LOG_LEVEL_WARNING,
+	LOG_LEVEL_ERROR
+}LogLevel;
+
 class Logger
 {
 public:
@@ -10,9 +17,9 @@ public:
 
 	static void Create(IDebugPort* pDebugPort); 
 	
-	void Log(String& pMessage);
+	void Log(LogLevel pLogLevel, String& pMessage);
 
-	void Log(const char * pMessage);
+	void Log(LogLevel pLogLevel, const char * pMessage);
 
 private:
 	Logger(IDebugPort* pDebugPort);

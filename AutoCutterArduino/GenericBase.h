@@ -10,9 +10,15 @@ protected:
 	GenericBase(void);
 	~GenericBase(void);
 
-	void Log(String& pMessage);
+	void LogInfo(String& pMessage);
 
-	void Log(const char* pMessage);
+	void LogInfo(const char* pMessage);
+
+	void LogWarning(String& pMessage);
+	void LogWarning(const char* pMessage);
+
+	void LogError(String& pMessage);
+	void LogError(const char* pMessage);
 
 	Logger* _log;
 

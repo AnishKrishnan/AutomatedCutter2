@@ -1,4 +1,4 @@
-#define FULL_TRACE		1
+#define LOG_LEVEL		LOG_LEVEL_INFO
 
 #define BLUETOOTH_RxD	6
 #define BLUETOOTH_TxD	7

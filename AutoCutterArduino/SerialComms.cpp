@@ -22,7 +22,7 @@ void SerialComms::OpenConnection()
 {
 
 	_serialPort.begin(_baudRate);
-	Log("connection openend");
+	LogInfo("connection openend");
 
 }
 
@@ -49,13 +49,13 @@ void SerialComms::ReceivedByte(unsigned char pByte)
 {
 	if(!_packetStarted)
 	{			
-		Log("in received byte");
+		LogInfo("in received byte");
 		if(pByte == PACKET_START_BYTE)
 		{		
 
 			_packetStarted = true;
 			_receivedData[_receivedIndex++] = pByte;
-			Log("packet byte received");
+			LogInfo("packet byte received");
 		}
 	}
 	else
@@ -67,11 +67,11 @@ void SerialComms::ReceivedByte(unsigned char pByte)
 
 			if(_endStreamCounter >= PACKET_END_STREAM_LENGTH)
 			{
-				Log("packet end reached");
+				LogInfo("packet end reached");
 				Packet p;
 				if(p.TryParseDataToPacket(_receivedData, _receivedIndex))
 				{
-					Log("firing event");
+					LogInfo("firing event");
 					//FireReceivedDataEvent(p);
 					_listener->RecievedDataCallback(p);
 				}
@@ -92,7 +92,7 @@ void SerialComms::TempAddListener(ICommsListener* pListener)
 {
 	if(pListener == NULL)
 	{
-		Log("Listener is null");
+		LogInfo("Listener is null");
 		return;
 	}
 

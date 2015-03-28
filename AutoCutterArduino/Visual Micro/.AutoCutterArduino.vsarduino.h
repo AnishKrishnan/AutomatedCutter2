@@ -11,7 +11,6 @@
 #ifndef _VSARDUINO_H_
 #define _VSARDUINO_H_
 #define __AVR_ATmega2560__
-#define _VMDEBUG 1
 #define ARDUINO 105
 #define ARDUINO_MAIN
 #define __AVR__
@@ -67,6 +66,8 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <CommsController.h>
 #include <CommsLinkBase.cpp>
 #include <CommsLinkBase.h>
+#include <CommsLinkFactory.cpp>
+#include <CommsLinkFactory.h>
 #include <Config.h>
 #include <DebugPortFactory.cpp>
 #include <DebugPortFactory.h>

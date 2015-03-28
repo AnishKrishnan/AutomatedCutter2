@@ -3,6 +3,7 @@
 #include "Config.h"
 #include "SerialDebug.h"
 #include "Logger.h"
+#include "DebugPortFactory.h"
 
 class GenericBase
 {

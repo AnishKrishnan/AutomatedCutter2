@@ -69,6 +69,8 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <CommsLinkFactory.cpp>
 #include <CommsLinkFactory.h>
 #include <Config.h>
+#include <DebugPortFactory.cpp>
+#include <DebugPortFactory.h>
 #include <GenericBase.cpp>
 #include <GenericBase.h>
 #include <ICommsListener.h>

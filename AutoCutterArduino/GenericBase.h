@@ -1,7 +1,8 @@
 #pragma once
 #include "Config.h"
-#include "BluetoothDebug.h"
+#include "SerialDebug.h"
 #include "Logger.h"
+
 class GenericBase
 {
 protected:
@@ -12,6 +13,6 @@ protected:
 
 private:
 
-	static HardwareSerial* _debugSerial;
+	static IDebugPort* _debugSerial;
 };
 

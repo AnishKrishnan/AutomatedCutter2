@@ -79,4 +79,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <QueueList.h>
 #include <SerialComms.cpp>
 #include <SerialComms.h>
+#include <SerialDebug.cpp>
+#include <SerialDebug.h>
 #endif

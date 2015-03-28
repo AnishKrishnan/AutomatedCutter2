@@ -4,3 +4,7 @@
 #define BLUETOOTH_TxD	7
 
 #define LED_PIN			13
+
+#define LOGGER_SERIAL_PORT Serial1
+
+#define SERIALCOMMS_DEFAULT_BAUD 9600

@@ -2,8 +2,8 @@
 #include "HardwareSerial.h"
 #include "CommsLinkBase.h"
 #include "Packet.h"
+#include "Config.h"
 
-#define SERIALCOMMS_DEFAULT_BAUD 9600
 class SerialComms : public CommsLinkBase
 {
 public:

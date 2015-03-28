@@ -1,17 +1,17 @@
 #include "GenericBase.h"
 
 
-HardwareSerial* GenericBase::_debugSerial = NULL;
+IDebugPort* GenericBase::_debugSerial = NULL;
 
 GenericBase::GenericBase(void)
 {
 	if(_debugSerial == NULL)
 	{
-		_debugSerial = &Serial1;
+		_debugSerial = new SerialDebug(LOGGER_SERIAL_PORT);
 	}
 
-//	Logger::Create(_bluetooth);
-//	_log = Logger::Instance();
+	Logger::Create(_debugSerial);
+	_log = Logger::Instance();
 }
 
 
